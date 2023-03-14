@@ -47,3 +47,21 @@ print(favSportsList)
 
 # zadanie8
 print("||Zad8 =================================||")
+skrociki = {
+    "idk": "i don't know",
+    "nwm": "nie wiem",
+    "cr?": "co robisz?",
+    "nmzc": "nie ma za co",
+    "dzk": "dzięki"
+}
+print(skrociki.keys())
+
+# zadanie9
+print("||Zad9 =================================||")
+
+print("prosze napisz zdanie:\n")
+zdanie = input()
+print(zdanie.count("a"))
+
+# zadanie10
+print("||Zad10 =================================||")
