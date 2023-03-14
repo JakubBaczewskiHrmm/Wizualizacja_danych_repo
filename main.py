@@ -56,12 +56,52 @@ skrociki = {
 }
 print(skrociki.keys())
 
-# zadanie9
-print("||Zad9 =================================||")
+# zadanie10
+print("||Zad10 =================================||")
 
 print("prosze napisz zdanie:\n")
 zdanie = input()
 print(zdanie.count("a"))
 
-# zadanie10
-print("||Zad10 =================================||")
+# zadanie9
+print("||Zad9 =================================||")
+games = {
+    "mc": "minecraft",
+    "F": "Fortnite",
+    "pz": "Project zomboid",
+    "bo3" : "call of duty black ops 3",
+    "tarkov" : "escape from tarkov"
+    }
+print(games.keys())
+
+# zadanie11
+print("||Zad11 =================================||")
+a1 = input()
+b1 = input()
+c1 = input()
+maksimum = a1
+if(b1 > maksimum):
+    maksimum = b1
+if(c1 > maksimum):
+    maksimum = c1
+print("największa liczba : " , maksimum)
+
+# zadanie12
+print("||Zad12 =================================||")
+
+jakiesLiczbyFloat = [22.2,33.3,27.37,13.41]
+print(jakiesLiczbyFloat)
+for i in range (0,len(jakiesLiczbyFloat)):
+    jakiesLiczbyFloat[i] *= jakiesLiczbyFloat[i]
+print(jakiesLiczbyFloat)
+
+# zadanie13
+print("||Zad13 =================================||")
+i = 0
+parzyste = []
+while i < 10:
+    l = int(input("Podaj liczbe: "))
+    if l % 2 == 0:
+        parzyste.append(l)
+    i += 1
+print(parzyste)
