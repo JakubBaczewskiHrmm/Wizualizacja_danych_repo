@@ -1,0 +1,64 @@
+import random
+
+print("-------------- Zad 1 ------------------\n")
+A = [1-x for x in (1,10)]
+print(A)
+B = [4**i for i in range(7)]
+print(B)
+C = [z for z in B if z % 2 == 0]
+print(C)
+print("-------------- Zad 2 ------------------\n")
+i = 0
+nieWiemCzyParzyste = []
+for i in range(10):
+    nieWiemCzyParzyste.append(random.randint(1,10))
+print(nieWiemCzyParzyste)
+parzyste = [x for x in nieWiemCzyParzyste if x % 2 == 0]
+print(parzyste)
+print("-------------- Zad 3 ------------------\n")
+produkty1 = {
+    "banany" : "szt.",
+    "truskawki" : "kg",
+    "mleko" : "l",
+    "jabłka" : "szt.",
+    "awokado": "szt."
+            }
+print(produkty1)
+odwrocone = {value: key for key, value in produkty1.items()}
+print(odwrocone)
+print("-------------- Zad 4 ------------------\n")
+def prostokącik(a,b,c):
+    if a**2 + b**2 == c**2:
+        print("jest prostokątny, ponieważ: a^2+b^2=c^2")
+    elif a**2 + c**2 == b**2:
+        print("jest prostokątny, ponieważ: a^2+c^2=b^2")
+    elif b**2 + c**2 == a**2:
+        print("jest prostokątny, ponieważ: b^2+c^2=a^2")
+        return True
+    else:
+        return False
+print(prostokącik(3,4,5))
+print(prostokącik(1,1,10))
+print(prostokącik(4,1,7))
+print("-------------- Zad 5 ------------------\n")
+def pole_trapeza(a=0,b=0,h=0):
+    return ((a+b)*h)/2
+print(pole_trapeza())
+print(pole_trapeza(4,8,5))
+print("-------------- Zad 6 ------------------\n")
+def iloczyn_ciagow(a=1,b=4,i=10):
+    wynik = 0
+    for j in range(i):
+        wynik = wynik + a*(b**j)
+    return wynik
+print(iloczyn_ciagow())
+print(iloczyn_ciagow(1,2,5))
+print("-------------- Zad 7 ------------------\n")
+def iloczyn_ciagow2(a=1,b=2,i=5):
+    wynik=1
+    for j in range(i):
+        wynik = wynik * a*(b**i)
+    return wynik
+print(iloczyn_ciagow2())
+print(iloczyn_ciagow2(1,2,5))
+print("-------------- Zad 8 ------------------\n")
