@@ -1,0 +1,160 @@
+zestaw a(1) 
+
+import math
+suma = (math.e**4 - math.log(34,2))**(1/3)
+wynik = round(suma, 2)
+print(wynik)
+
+lista = [12,13,124,222,16,17,18]
+lista2=[lista[i] for i in range(2,len(lista),3)]
+print(lista)
+print(lista2)
+
+lista = [11,12,1344,14444,155,166]
+def zad3(lista):
+    suma = lista[0]+lista[-1]
+    wieksze = sum(1 for x in lista if x>suma)
+    return(suma,wieksze)
+d = zad3(lista)
+print(d)
+
+with open("tekst.txt","r",encoding="utf-8") as d:
+    text=d.read()
+fragment=text[49:74]
+print(fragment)
+liczba=sum(1 for c in fragment if c.islower())
+print(liczba)
+
+try:
+    a = int(input("a: "))
+    b = int(input("b: "))
+    c = int(input("c: "))
+    if a>0 and b>0 and c>0:
+        if a**2 + b**2 == c**2:
+            pole = 0.5 * a * b
+            with open("zadjakies.txt","w") as d:
+                d.write(str(pole))
+        else:
+            with open("zadjakies.txt","w") as d:
+                d.write("nie da sie prostokatnego")
+    else:
+        print("wieksze od zera ")
+except ValueError:
+    print("zle wartosci")
+
+zestaw A
+
+try:
+    a=int(input("a: "))
+    b=int(input("b: "))
+    suma=a**2 + a * b + b**2
+    with open("zadanie1.txt","w",encoding="utf-8") as d:
+        d.write(str(suma))
+except ValueError:
+    print("zle wartosci")
+
+import numpy as np
+lista=[11,12,13,14,15]
+lista2=[16,17,18,19,20]
+def zad2(lista,lista2):
+    lista3=[]
+    for a,b in zip(lista,lista2):
+        lista3.append(a+b)
+    return lista3
+siema = zad2(lista,lista2)
+print(siema)
+
+with open("tekst.txt","r",encoding="utf-8") as d:
+    tekst = d.read()                            #tekst = d.read()[100:135]
+fragment=tekst[100:135]
+litera=[d for d in fragment if d.isupper()]
+if(len(litera)>0):
+    print(litera)
+    print(len(litera))
+else:
+    print("nie ma duzych liter lolz")
+
+lista = [11,12,13,14,15]
+a=12
+lista2=[x for x in lista if x>a]
+print(lista2)
+
+import math
+
+wynik= (1/5)**(math.e**3 + math.cos(39)**2)+ (2/7)**3 + math.pi
+print(round(wynik,2))
+
+zestaw b(1)
+
+import math
+suma = (math.log(20)+math.cos(45)+math.e)**(1/3)
+print(round(suma,2))
+
+lista = [10, 5, 8, 3, 7, 2, 9]
+lista2=[x for x in lista if x!= min(lista)]
+print(lista2)
+
+d = {'siema':'el',"e":12.08,90.93:12.45}
+def zad(d):
+    lista=[]
+    for a,b in d.items():
+        if(isinstance(a,float) and isinstance(b,float)):
+           lista.append((a,b))
+    return lista
+f=zad(d)
+print(f)
+
+with open("tekst.txt","r",encoding="utf-8") as d:
+    fragment =d.read()[17:58]
+print(fragment)
+suma = sum(1 for x in fragment if x=='c')
+print(suma)
+ilosc = fragment.count('c')
+print(ilosc)
+
+try:
+    a1=int(input("a1: "))
+    n=int(input("n: "))
+    q=int(input("q: "))
+    suma= a1* q**(n-1)
+    print(suma)
+    with open("plik.txt","w",encoding="utf-8") as d:
+        d.write(str(suma))
+except ValueError:
+    print("zle liczby")
+
+zestaw B
+
+with open("tekst.txt","r",encoding="utf-8") as d:
+    fragment=d.read()[71:111]
+litery = [x for x in fragment]
+suma=litery.count('A')
+if(suma==0):
+    print("nie ma w tekscie" )
+else:
+    print(suma)
+
+lista = [11,12,13,14,2.99,2.76]
+lista2 = [x for x in lista if isinstance(x,float)]
+print(lista)
+print(lista2)
+
+def zad3(lista):   
+    s = lista[0]+sum(lista)
+    lista.append(s)
+    return lista
+lista=[11,12,13,14,15]
+print(zad3(lista))
+
+import math
+suma = math.sin(56)**2 + (((4**2)/25)+math.log(85,3))**(1/4)
+print(round(suma,2))
+
+try:
+    n = int(input("n"))
+    suma=sum(range(0,n+1))
+    print(suma)
+    with open("zadanie5.txt","w",encoding="utf-8") as d:
+        d.write(str(suma))
+except ValueError:
+    print("zla wartosc n")
