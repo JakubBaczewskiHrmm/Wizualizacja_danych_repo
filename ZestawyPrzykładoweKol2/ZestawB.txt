@@ -1,0 +1,124 @@
+Zad1. (6pkt)
+Za pomocą biblioteki matplotlib utwórz wykres liniowy funkcji f(x)=cos(x)/x2
+, dla x w 
+przedziale [3,7], wartości x zmieniają się co 0.25. Dodaj odpowiednie etykiety do osi 
+wykresu, tytuł linii, legendę oraz tytuł wykresu. Dodatkowo wyświetl oba wektory 
+przekazywane na wykres. Ustaw zakres oś x na granice przedziału
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Przygotowanie danych
+x = np.arange(3, 7.25, 0.25)
+y = np.cos(x) / x**2
+
+# Tworzenie wykresu liniowego
+plt.plot(x, y, marker='o', linestyle='-', label='f(x)=cos(x)/x^2')
+
+# Dodawanie etykiet do osi wykresu
+plt.xlabel('x')
+plt.ylabel('f(x)')
+
+# Dodawanie tytułu linii
+plt.title('Wykres funkcji f(x)=cos(x)/x^2')
+
+# Dodawanie legendy
+plt.legend()
+
+# Ustawianie zakresu osi x
+plt.xlim(3, 7)
+
+# Zapisywanie wykresu do pliku obraz1.png
+plt.savefig('obraz1.png')
+
+# Wyświetlanie wykresu
+plt.show()
+
+
+========================================================================
+
+pogrubienie wykresu jakiegoś tam plt.plot(x, y, marker='o', linestyle='-', linewidth=2, label='f(x)=cos(x)/x^2')
+
+
+========================================================================
+
+Używając biblioteki pandas wczytaj zawartość pliku ‘wine.data’ do ramki 
+danych i wykonaj następujące kroki:
+• utwórz nową ramkę danych gdzie znajdzie się sto losowych wierszy, wiersze mogą 
+się powtarzać,
+• na nowej ramce danych dokonaj grupowania danych po kolumnie class,
+• na wykresie kołowym przedstaw procentowy udział każdej z klasy
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Wczytanie danych do ramki danych
+data = pd.read_csv('wine.data', header=None)
+
+# Utworzenie nowej ramki danych z losowymi wierszami
+random_data = data.sample(n=100, replace=True)
+
+# Grupowanie danych po kolumnie 'class'
+grouped_data = random_data.groupby(0).size()
+
+# Obliczenie procentowego udziału każdej klasy
+percentages = grouped_data / len(random_data) * 100
+
+# Zaokrąglenie wartości procentowych do dwóch miejsc po przecinku
+percentages = percentages.round(2)
+
+# Tworzenie wykresu kołowego
+plt.pie(percentages, labels=percentages.index, autopct='%1.2f%%')
+
+# Dodanie tytułu wykresu
+plt.title('Procentowy udział klas')
+
+# Zapisanie wykresu do pliku obraz2.png
+plt.savefig('obraz2.png')
+
+# Wyświetlenie wykresu
+plt.show()
+
+
+========================================================================  
+
+Za pomocą biblioteki pandas wczytaj zawartość pliku „wine.data”, następnie na 
+wykresie kolumnowym z biblioteki seaborn przedstaw średnie wartości alkoholu dla każdej z 
+klasy (kolumny Alcohol i Class). Na wykresie mają być podpisane etykiety dotyczące osi, 
+legenda, tytuł wykresu. Ustaw styl wykresu na podstawowy.
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Wczytanie danych do ramki danych
+data = pd.read_csv('wine.data', header=None)
+
+# Nadanie nazw kolumn
+data.columns = ['Class', 'Alcohol', 'Malic acid', 'Ash', 'Alcalinity of ash', 'Magnesium',
+                'Total phenols', 'Flavanoids', 'Nonflavanoid phenols', 'Proanthocyanins',
+                'Color intensity', 'Hue', 'OD280/OD315 of diluted wines', 'Proline']
+
+# Utworzenie wykresu kolumnowego z wykorzystaniem biblioteki seaborn
+sns.barplot(data=data, x='Class', y='Alcohol')
+
+# Dodanie etykiet do osi wykresu
+plt.xlabel('Class')
+plt.ylabel('Średnie wartości alkoholu')
+
+# Dodanie legendy
+plt.legend()
+
+# Ustawienie tytułu wykresu
+plt.title('Średnie wartości alkoholu dla każdej z klas')
+
+# Ustawienie stylu wykresu na podstawowy
+sns.set_style('whitegrid')
+
+# Zapisanie wykresu do pliku obraz3.png
+plt.savefig('obraz3.png')
+
+# Wyświetlenie wykresu
+plt.show()
+

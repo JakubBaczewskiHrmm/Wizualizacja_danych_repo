@@ -1,0 +1,174 @@
+
+# Za pomocą bibliotek matplotlib utwórz wykres liniowy funkcji f(x)=x2 + sin(x), dla 13 wartości 
+# x z przedziału [-5,5]. Dodaj odpowiednie etykiety do osi wykresu, tytuł linii, legendę oraz tytuł 
+# wykresu. Dodatkowo wyświetl oba wektory przekazywane na wykres. Ustaw zakres oś x na 
+# granice przedziału.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Tworzenie wektora x z 13 równoodległymi wartościami w przedziale [-5, 5]
+x = np.linspace(-5, 5, 13)
+y = x**2 + np.sin(x)
+
+plt.plot(x, y, label='f(x) = x^2 + sin(x)')
+
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('Wykres funkcji f(x) = x^2 + sin(x)')
+plt.legend()
+
+# Ustawianie zakresu osi x na granice przedziału [-5, 5]
+plt.xlim(-5, 5)
+
+# Wyświetlanie wektorów na wykresie
+plt.scatter(x, y, color='red', label='Wartości x i f(x)')
+plt.legend()
+
+plt.savefig('obraz.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+=========================================================================
+
+# Za pomocą matplotlib odwzoruj siatkę wykresów z poniższego zdjęcia. 
+# Siatkę zapisz do pliku(imie_nazwisko_zad2.png)
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Tworzenie wektora x i przedziałów y dla pierwszego wykresu
+x1 = np.arange(-2, 2, 1)
+y1 = np.arange(-30, 11, 10)
+
+# Obliczanie wartości funkcji dla pierwszego wykresu
+f1 = np.tan(x1) * np.sin(x1)
+
+# Ustawianie rozmiaru siatki wykresów
+plt.subplot(2, 2, 1)
+
+# Tworzenie pierwszego wykresu (zielone linie przerywane)
+plt.plot(x1, f1, 'g--')
+
+# Ustawianie zakresu osi x i y dla pierwszego wykresu
+plt.xlim(-2, 2)
+plt.ylim(-30, 10)
+
+# Dodawanie etykiet do osi wykresu
+plt.xlabel('x')
+plt.ylabel('f(x)')
+
+# Dodawanie tytułu dla pierwszego wykresu
+plt.title('Wykres 1: tan(x)*sin(x)')
+
+# Tworzenie wektora x i przedziałów y dla drugiego wykresu
+x2 = np.arange(-3, 4, 3)
+y2 = np.arange(-20, 21, 20)
+
+# Obliczanie wartości funkcji dla drugiego wykresu
+f2 = np.sin(x2) + np.tan(x2)
+
+# Ustawianie rozmiaru siatki wykresów
+plt.subplot(2, 2, 3)
+
+# Tworzenie drugiego wykresu (niebieska linia nieprzerywana)
+plt.plot(x2, f2, 'b-')
+
+# Ustawianie zakresu osi x i y dla drugiego wykresu
+plt.xlim(-3, 3)
+plt.ylim(-20, 20)
+
+# Dodawanie etykiet do osi wykresu
+plt.xlabel('x')
+plt.ylabel('f(x)')
+
+# Dodawanie tytułu dla drugiego wykresu
+plt.title('Wykres 2: sin(x)+tan(x)')
+
+# Zapisywanie siatki wykresów do pliku obraz2.png
+plt.savefig('obraz2.png', dpi=300)
+
+# Wyświetlanie siatki wykresów
+plt.tight_layout()
+plt.show()
+
+========================================================================
+
+Używając biblioteki pandas wczytaj zawartość pliku ‘wine.data’ do ramki 
+danych i wykonaj następujące kroki:
+• utwórz nową ramkę danych gdzie znajdą się wiersze dla klasy 1 i 2 (kolumna class),
+• na nowej ramce danych dokonaj grupowania danych po kolumnie class,
+• na wykresie kolumnowym przedstaw średnią ilość magnezu dla każdej z klas.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Wczytanie danych do ramki danych
+data = pd.read_csv('wine.data', header=None)
+
+# Utworzenie nowej ramki danych dla klas 1 i 2
+filtered_data = data[data[0].isin([1, 2])]
+
+# Grupowanie danych po kolumnie class
+grouped_data = filtered_data.groupby(0)
+
+# Obliczanie średniej ilości magnezu dla każdej z klas
+mean_magnesium = grouped_data[4].mean()
+
+# Tworzenie wykresu kolumnowego dla średniej ilości magnezu
+mean_magnesium.plot(kind='bar')
+
+# Dodawanie etykiet do osi wykresu
+plt.xlabel('Klasa')
+plt.ylabel('Średnia ilość magnezu')
+
+# Dodawanie tytułu wykresu
+plt.title('Średnia ilość magnezu dla klas 1 i 2')
+
+# Zapisywanie wykresu kolumnowego do pliku obraz3.png
+plt.savefig('obraz3.png', dpi=300)
+
+# Wyświetlanie wykresu
+plt.show()
+
+
+========================================================================
+
+# Za pomocą biblioteki pandas wczytaj zawartość pliku „wine.data”, następnie utworzysz grupę 
+# po kolumnie class. Za pomocą biblioteki matplotlib, na wykresie kołowym przedstaw 
+# procentowy udział każdej z klas. Wartości liczbowe na wykresie mają być zaokrąglone do 
+# dwóch miejsc po przecinku, ustaw czcionkę rozmiaru 14, dodaj etykietę do wykresu oraz 
+# tytuł. Legenda ma zawierać podpis do czego się odnosi.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Wczytanie danych do ramki danych
+data = pd.read_csv('wine.data', header=None)
+
+# Utworzenie grupy po kolumnie 'class'
+grouped_data = data.groupby(0).size()
+
+# Obliczenie procentowego udziału każdej z klas
+percentages = grouped_data / len(data) * 100
+
+# Zaokrąglenie wartości procentowych do dwóch miejsc po przecinku
+percentages = percentages.round(2)
+
+# Ustawienie czcionki o rozmiarze 14
+plt.rcParams['font.size'] = 14
+
+# Tworzenie wykresu kołowego
+plt.pie(percentages, labels=percentages.index, autopct='%1.2f%%')
+
+# Dodanie etykiety do wykresu
+plt.title('Procentowy udział klas')
+
+# Dodanie legendy
+plt.legend(title='Klasy')
+
+# Zapisanie wykresu do pliku obraz4.png
+plt.savefig('obraz4.png', dpi=300)
+
+# Wyświetlenie wykresu
+plt.show()
+
